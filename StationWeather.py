@@ -1,34 +1,37 @@
+#!/usr/bin/python3
+
 from pyowm import OWM
 from pyowm.utils import config
 from pyowm.utils import timestamps
 
+import config
 
-owm = OWM('0dcfddcae5072808bdca1ec2fabb515f')
+owm = OWM(config.api_key)
 mgr = owm.weather_manager()
 
 # Goldstone
 gObservation = mgr.weather_at_place('Goldstone, US')
 g = gObservation.weather
 
-print("\tGoldstone")
+print("\t***GOLDSTONE***")
 print("Weather Status: " + g.detailed_status)
 print(g.wind())
-print(g.clouds)
+print("Cloud Coverage: " + str(g.clouds)+"\n\n")
 
 # Canberra
 cObservation = mgr.weather_at_place('Canberra, AU')
 c = cObservation.weather
 
-print("\tCanberra")
+print("\t***CANBERRA***")
 print("Weather Status: " + c.detailed_status)
 print(c.wind())
-print(c.clouds)
+print("Cloud Coverage: " + str(c.clouds) +"\n\n")
 
 # Madrid
 mObservation = mgr.weather_at_place('Madrid,ES')
 m = mObservation.weather
 
-print("\tMadrid")
+print("\t***MADRID***")
 print("Weather Status: " + m.detailed_status)
 print(m.wind())
-print(m.clouds)
+print("Cloud Coverage: " + str(m.clouds))
